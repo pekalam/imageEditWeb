@@ -340,4 +340,5 @@ ASALocalRun/
 healthchecksdb
 
 
-testReports/*
+UnitTests/testReports/*
+IntegrationTests/docker-testenv/testReports/*

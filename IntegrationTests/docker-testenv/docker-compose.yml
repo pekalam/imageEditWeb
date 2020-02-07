@@ -27,7 +27,7 @@ services:
     container_name: integrationtests
     hostname: integrationtests
     volumes: 
-      - "../../testReports:/reports"
+      - "./testReports:/reports"
     build:
       context: ../../
       dockerfile: ./IntegrationTests/docker-testenv/integration-tests/Dockerfile
