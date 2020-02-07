@@ -22,3 +22,7 @@ steps:
 - script: |
     dotnet test UnitTests/UnitTests.csproj /p:CollectCoverage=true /maxcpucount:8 /p:CoverletOutput="../coverage" /p:CoverletOutputFormat=\"json,opencover\"
   displayName: 'Run a multi-line script'
+
+- script: |
+    bash <(curl -s https://codecov.io/bash)
+  displayName: 'Upload to codecov.io'
