@@ -1,0 +1,3 @@
+{
+  "sqlserver_connection_string": "Data Source=ig_sqlserver;Initial Catalog=ImageEdit.Db;Integrated Security=False;User ID=sa;Password=Qwerty1234" 
+}

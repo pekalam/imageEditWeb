@@ -22,4 +22,10 @@
     <ProjectReference Include="..\ImageEdit.Core\ImageEdit.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="test.settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

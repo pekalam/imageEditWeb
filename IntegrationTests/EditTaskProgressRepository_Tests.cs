@@ -22,7 +22,10 @@ namespace IntegrationTests
         protected override void ConfigureDbContextOptions(DbContextOptionsBuilder<ImageEditAppContext> optionsBuilder, IComponentContext context)
         {
             base.ConfigureDbContextOptions(optionsBuilder, context);
-            optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=ImageEdit;User ID=sa;Password=qwerty");
+            var connectionString = TestSettingsAccessor.Settings.ContainsKey("sqlserver_connection_string")
+                ? TestSettingsAccessor.Settings["sqlserver_connection_string"]
+                : "Data Source=127.0.0.1;Initial Catalog=ImageEdit;User ID=sa;Password=qwerty";
+            optionsBuilder.UseSqlServer(connectionString);
         }
     }
 
@@ -49,6 +52,7 @@ namespace IntegrationTests
             _container = CreateDIContainer();
             _dbContext = _container.Resolve<ImageEditAppContext>();
             _editTaskProgressRepository = _container.Resolve<IEditTaskProgressRepository>();
+            _dbContext.Database.ExecuteSqlRaw($"TRUNCATE TABLE [{nameof(_dbContext.DbEditTaskProgress)}];");
         }
 
         private IContainer CreateDIContainer()

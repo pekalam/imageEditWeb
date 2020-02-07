@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  ig_sqlserver:
+    container_name: ig_sqlserver
+    hostname: ig_sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Qwerty1234
+      - MSSQL_AGENT_ENABLED=True
+      - ENABLE_AGENT=yes
+    ports:
+      - '1433:1433'
+    build:
+      context: ./sqlserver-docker
+      dockerfile: Dockerfile
+
+  ig_rabbitmq:
+    container_name: ig_rabbitmq
+    hostname: ig_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  integrationtests:
+    container_name: integrationtests
+    hostname: integrationtests
+    volumes: 
+      - "../../testReports:/reports"
+    build:
+      context: ../../
+      dockerfile: ./IntegrationTests/docker-testenv/integration-tests/Dockerfile
+    depends_on: 
+      - "ig_sqlserver"
+      - "ig_rabbitmq"
+
+
