@@ -19,9 +19,11 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: |
-    dotnet test UnitTests/UnitTests.csproj /p:CollectCoverage=true /maxcpucount:8 /p:CoverletOutput="../coverage" /p:CoverletOutputFormat=\"json,opencover\"
-  displayName: 'Run a multi-line script'
+- task: ShellScript@2
+  displayName: 'Unit tests'
+  inputs:
+    scriptPath: 'scripts/run_unit_tests_with_coverage.sh'
+    cwd: 'scripts'
 
 - script: |
     bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
