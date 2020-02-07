@@ -24,5 +24,5 @@ steps:
   displayName: 'Run a multi-line script'
 
 - script: |
-    bash <(curl -s https://codecov.io/bash)
+    bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
   displayName: 'Upload to codecov.io'
