@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
- name: 'myserver'
+  name: 'myserver'
   vmImage: 'ubuntu-latest'
 
 
