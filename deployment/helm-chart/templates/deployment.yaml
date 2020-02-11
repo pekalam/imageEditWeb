@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: image-edit
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Values.label.name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.label.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.label.name }}
+        environment: {{ .Values.environment }}
+    spec:
+      containers:
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.container.image }}:{{ .Values.container.tag }}
+          imagePullPolicy: {{ .Values.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.container.port }}
+          env:
+            - name: apphost
+              value: {{ .Values.apphost }}
+            - name: appenvironment
+              value: {{ .Values.environment }}
+      initContainers:
+        - name: wait-for-mq
+          image: marekbf3/init-container
+          command: ['wait-for', {{ .Release.Name }}-service-rabbitmq:{{ .Values.mq.service.port }}]
+        - name: wait-for-db
+          image: marekbf3/init-container
+          command: ['wait-for', {{ .Release.Name }}-service-db:32112]

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: image-edit
+  name: {{ .Release.Name }}-db-deployment
+  labels:
+    app: {{ .Values.db.label.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.db.label.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.db.label.name }}
+        environment: {{ .Values.environment }}
+    spec:
+      containers:
+        - name: {{ .Values.db.container.name }}
+          image: {{ .Values.db.container.image }}:{{ .Values.db.container.tag }}
+          imagePullPolicy: {{ .Values.db.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.db.container.port }}
+          env:
+            - name: apphost
+              value: {{ .Values.apphost }}
+            - name: appenvironment
+              value: {{ .Values.environment }}
+            - name: ACCEPT_EULA
+              value: 'Y'
+            - name: SA_PASSWORD
+              value: 'Qwerty1234'
+            - name: MSSQL_AGENT_ENABLED
+              value: 'True'
+            - name: ENABLE_AGENT
+              value: 'yes'

@@ -20,9 +20,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ImageEdit.Core\ImageEdit.Core.csproj" />
+    <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="test.settings.local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="test.settings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

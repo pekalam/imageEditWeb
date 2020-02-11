@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: image-edit
+  name: {{ .Release.Name }}-rabbitmq
+  labels:
+    app: {{ .Values.mq.label.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.mq.label.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.mq.label.name }}
+        environment: {{ .Values.environment }}
+    spec:
+      containers:
+        - name: {{ .Values.mq.container.name }}
+          image: {{ .Values.mq.container.image }}:{{ .Values.mq.container.tag }}
+          imagePullPolicy: {{ .Values.mq.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.mq.container.port }}
+          env:
+            - name: apphost
+              value: {{ .Values.apphost }}
+            - name: appenvironment
+              value: {{ .Values.environment }}

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: image-edit
+  name: {{ .Release.Name }}-service-db
+  labels:
+    app: {{ .Values.db.label.name }}
+spec:
+  ports:
+  - port: {{ .Values.db.service.port}}
+    name: "dbport"
+    protocol: TCP
+    targetPort: {{ .Values.db.container.port }}
+  - port: 32112
+    name: "healthport"
+    protocol: TCP
+    targetPort: 32112
+  selector:
+    app: {{ .Values.db.label.name }}
+  type: {{ .Values.db.service.type }}

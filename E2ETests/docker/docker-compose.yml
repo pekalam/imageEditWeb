@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  e2e_sqlserver:
+    container_name: e2e_sqlserver
+    hostname: e2e_sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Qwerty1234
+      - MSSQL_AGENT_ENABLED=True
+      - ENABLE_AGENT=yes
+    ports:
+      - '1433:1433'
+    build:
+      context: ../../docker-shared/sqlserver-docker
+      dockerfile: Dockerfile
+
+  e2e_rabbitmq:
+    container_name: e2e_rabbitmq
+    hostname: e2e_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  e2etests:
+    container_name: e2etests
+    hostname: e2etests
+    volumes: 
+      - "./testReports:/reports"
+    build:
+      context: ../../
+      dockerfile: ./E2ETests/docker/e2etests/Dockerfile
+    depends_on: 
+      - "e2e_sqlserver"
+      - "e2e_rabbitmq"
+
+

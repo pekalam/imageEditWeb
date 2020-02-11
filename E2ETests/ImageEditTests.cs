@@ -30,7 +30,7 @@ namespace E2ETests
 
             content.Headers.Add("enctype", "multipart/form-data");
 
-            var imageContent = new ByteArrayContent(File.ReadAllBytes(@"C:\Users\Marek\Desktop\img\0.png"));
+            var imageContent = new ByteArrayContent(File.ReadAllBytes(@"img/0.png"));
 
 
             imageContent.Headers.ContentType =

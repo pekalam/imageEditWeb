@@ -1,0 +1,45 @@
+environment: production
+
+
+label:
+  name: image-edit
+
+container:
+  name: image-edit-web
+  pullPolicy: Always
+  image: marekbf3/image-edit-web
+  tag: latest
+  port: 80
+replicas: 1
+
+service:
+  port: 80
+  type: NodePort
+
+
+db:
+  container:
+    name: image-edit-db
+    image: marekbf3/image-edit-db
+    pullPolicy: Always
+    tag: latest
+    port: 1433
+  label:
+    name: image-edit-db
+  service:
+    port: 1433
+    type: NodePort
+
+
+mq:
+  container:
+    name: image-edit-mq
+    image: rabbitmq
+    tag: 3
+    pullPolicy: Always
+    port: 5672
+  label:
+    name: image-edit-mq
+  service:
+    port: 5672
+    type: NodePort

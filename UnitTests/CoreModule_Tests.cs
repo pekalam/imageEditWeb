@@ -8,7 +8,9 @@ using ImageEdit.Core.Persistence.Entities;
 using ImageEdit.Core.Repositories;
 using ImageEdit.Core.Services.Impl;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Moq;
+using TestUtils;
 
 namespace UnitTests
 {
@@ -19,7 +21,7 @@ namespace UnitTests
         public CoreModule_Tests()
         {
             var builder = new ContainerBuilder();
-            builder.Register<IConfiguration>(context => { return Mock.Of<IConfiguration>(); });
+            builder.Register<IConfiguration>(context => TestSettings.Configuration);
             builder.RegisterModule<CoreModule>();
             _container = builder.Build();
         }

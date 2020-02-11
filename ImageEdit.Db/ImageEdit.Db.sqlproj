@@ -66,6 +66,6 @@
     <PreBuildEvent />
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>COPY "$(SolutionDir)$(ProjectName)\$(OutputPath)$(TargetDatabase)_Create.sql" "$(SolutionDir)IntegrationTests\docker-testenv\sqlserver-docker\container-scripts\init.sql"</PostBuildEvent>
+    <PostBuildEvent>COPY "$(SolutionDir)$(ProjectName)\$(OutputPath)$(TargetDatabase)_Create.sql" "$(SolutionDir)docker-shared\sqlserver-docker\container-scripts\init.sql"</PostBuildEvent>
   </PropertyGroup>
 </Project>

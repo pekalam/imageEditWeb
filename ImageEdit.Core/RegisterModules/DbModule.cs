@@ -10,18 +10,19 @@ namespace ImageEdit.Core.RegisterModules
 {
     public class DbModule : Module
     {
-        protected virtual void ConfigureDbContextOptions(DbContextOptionsBuilder<ImageEditAppContext> optionsBuilder, IComponentContext context)
+        protected virtual void ConfigureDbContextOptions(DbContextOptionsBuilder<ImageEditAppContext> optionsBuilder, IConfiguration configuration)
         {
-            var config = context.Resolve<IConfiguration>();
-            optionsBuilder.UseSqlServer("Data Source=127.0.0.1;Initial Catalog=ImageEdit;User ID=sa;Password=qwerty");
+            optionsBuilder.UseSqlServer(configuration["SQLServer:ConnectionString"]);
         }
 
         protected override void Load(ContainerBuilder builder)
         {
             builder.Register<DbContextOptions<ImageEditAppContext>>((IComponentContext context) =>
             {
+                var config = context.Resolve<IConfiguration>();
+                               
                 var optionsBuilder = new DbContextOptionsBuilder<ImageEditAppContext>();
-                ConfigureDbContextOptions(optionsBuilder, context);
+                ConfigureDbContextOptions(optionsBuilder, config);
 
                 return optionsBuilder.Options;
             }).InstancePerLifetimeScope();

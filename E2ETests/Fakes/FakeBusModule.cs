@@ -2,6 +2,8 @@ using Autofac;
 using ImageEdit.Core.RegisterModules;
 using MassTransit;
 using MassTransit.RabbitMqTransport;
+using Microsoft.Extensions.Configuration;
+using TestUtils;
 
 namespace E2ETests.Fakes
 {

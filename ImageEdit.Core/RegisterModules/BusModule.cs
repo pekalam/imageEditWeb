@@ -10,6 +10,11 @@ namespace ImageEdit.Core.RegisterModules
 {
     public class BusModule : Module
     {
+        protected virtual void ConfigureBus(IRabbitMqBusFactoryConfigurator cfg, IConfiguration configuration)
+        {
+            cfg.Host(configuration["RabbitMQ:Host"]);
+        }
+
         protected virtual void RegisterConsumers(ContainerBuilder builder)
         {
             builder.RegisterConsumers(typeof(BusModule).Assembly);
@@ -28,9 +33,10 @@ namespace ImageEdit.Core.RegisterModules
             {
                 configure.AddBus(context => Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
+                    var config = context.Resolve<IConfiguration>();
+                    
                     configure.AddConsumersFromContainer(context);
-
-                    cfg.Host("localhost");
+                    ConfigureBus(cfg, config);
 
                     cfg.ReceiveEndpoint("editTask", configurator =>
                     {

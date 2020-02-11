@@ -27,10 +27,17 @@
   <ItemGroup>
     <ProjectReference Include="..\ImageEdit.Core\ImageEdit.Core.csproj" />
     <ProjectReference Include="..\ImageEdit.WebAPI\ImageEdit.WebAPI.csproj" />
+    <ProjectReference Include="..\TestUtils\TestUtils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="img\0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: image-edit
+  name: {{ .Release.Name }}-service-rabbitmq
+  labels:
+    app: {{ .Values.mq.label.name }}
+spec:
+  ports:
+  - port: {{ .Values.mq.service.port}}
+    protocol: TCP
+    targetPort: {{ .Values.mq.container.port }}
+  selector:
+    app: {{ .Values.mq.label.name }}
+  type: {{ .Values.mq.service.type }}

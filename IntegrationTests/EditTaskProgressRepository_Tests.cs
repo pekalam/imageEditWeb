@@ -14,19 +14,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Moq;
+using TestUtils;
 
 namespace IntegrationTests
 {
     public class FakeDbModule : DbModule
     {
-        protected override void ConfigureDbContextOptions(DbContextOptionsBuilder<ImageEditAppContext> optionsBuilder, IComponentContext context)
-        {
-            base.ConfigureDbContextOptions(optionsBuilder, context);
-            var connectionString = TestSettingsAccessor.Settings.ContainsKey("sqlserver_connection_string")
-                ? TestSettingsAccessor.Settings["sqlserver_connection_string"]
-                : "Data Source=127.0.0.1;Initial Catalog=ImageEdit;User ID=sa;Password=qwerty";
-            optionsBuilder.UseSqlServer(connectionString);
-        }
+
     }
 
     public class FakeCoreModule : CoreModule
@@ -58,7 +52,7 @@ namespace IntegrationTests
         private IContainer CreateDIContainer()
         {
             var builder = new ContainerBuilder();
-            builder.Register<IConfiguration>(context => { return Mock.Of<IConfiguration>(); });
+            builder.Register<IConfiguration>(context => TestSettings.Configuration);
             builder.RegisterModule<FakeCoreModule>();
             return builder.Build();
         }
@@ -69,7 +63,8 @@ namespace IntegrationTests
             var editTaskProgress = new EditTaskProgress(Guid.NewGuid(), Guid.NewGuid(), EditTaskState.Pending);
             _editTaskProgressRepository.AddTaskProgress(editTaskProgress);
 
-            var found = _dbContext.DbEditTaskProgress.SingleOrDefault(e => e.TaskId == editTaskProgress.TaskId && e.GroupId == editTaskProgress.GroupId);
+            var found = _dbContext.DbEditTaskProgress.SingleOrDefault(e =>
+                e.TaskId == editTaskProgress.TaskId && e.GroupId == editTaskProgress.GroupId);
             var total = _dbContext.DbEditTaskProgress.Count();
 
             found.Should().NotBeNull();
@@ -88,7 +83,8 @@ namespace IntegrationTests
             editTaskProgress.EditTaskState = EditTaskState.Error;
             _editTaskProgressRepository.UpdateTaskProgress(editTaskProgress);
 
-            var found = _dbContext.DbEditTaskProgress.SingleOrDefault(e => e.TaskId == editTaskProgress.TaskId && e.GroupId == editTaskProgress.GroupId);
+            var found = _dbContext.DbEditTaskProgress.SingleOrDefault(e =>
+                e.TaskId == editTaskProgress.TaskId && e.GroupId == editTaskProgress.GroupId);
             var total = _dbContext.DbEditTaskProgress.Count();
 
             found.Should().NotBeNull();
