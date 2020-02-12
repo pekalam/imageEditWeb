@@ -30,7 +30,7 @@ spec:
       initContainers:
         - name: wait-for-mq
           image: marekbf3/init-container
-          command: ['wait-for', {{ .Release.Name }}-service-rabbitmq:{{ .Values.mq.service.port }}]
+          command: ['wait-for', {{ .Release.Name }}-service-rabbitmq:{{ .Values.mq.service.port }}, '-t', '300']
         - name: wait-for-db
           image: marekbf3/init-container
-          command: ['wait-for', {{ .Release.Name }}-service-db:32112]
+          command: ['wait-for', {{ .Release.Name }}-service-db:32112, '-t', '300']
