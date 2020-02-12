@@ -9,32 +9,79 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+stages:
+- stage: Build
+  displayName: Build
+  jobs:  
+  - job: Build
+    displayName: Build
+    steps:
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'sdk'
+          version: '3.1.101'
+      - task: DotNetCoreCLI@2
+        inputs:
+          command: 'build'
+          projects: 'ImageEdit/ImageEdit.WebAPI/ImageEdit.WebAPI.csproj'
+- stage: Test
+  displayName: Unit, Integration, E2E Tests
+  jobs:  
+  - job: Run_tests
+    displayName: Run tests
+    steps:
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'sdk'
+          version: '3.1.101'
 
-steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '3.1.101'
+      - task: ShellScript@2
+        displayName: 'Run unit tests'
+        inputs:
+            scriptPath: 'scripts/run_unit_tests_with_coverage.sh'
+            cwd: 'scripts'
 
-- task: ShellScript@2
-  displayName: 'Run unit tests'
-  inputs:
-    scriptPath: 'scripts/run_unit_tests_with_coverage.sh'
-    cwd: 'scripts'
+      - task: ShellScript@2
+        displayName: 'Run integration tests'
+        inputs:
+          scriptPath: 'scripts/run_integration_tests_with_coverage.sh'
+          cwd: 'scripts'
 
-- task: ShellScript@2
-  displayName: 'Run integration tests'
-  inputs:
-    scriptPath: 'scripts/run_integration_tests_with_coverage.sh'
-    cwd: 'scripts'
+      - task: ShellScript@2
+        displayName: 'Run e2e tests'
+        inputs:
+          scriptPath: 'scripts/run_e2e_tests.sh'
+          cwd: 'scripts'
 
-- task: ShellScript@2
-  displayName: 'Run e2e tests'
-  inputs:
-    scriptPath: 'scripts/run_e2e_tests.sh'
-    cwd: 'scripts'
-
-
-- script: |
-    bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
-  displayName: 'Upload to codecov.io'
+      - script: |
+          bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
+        displayName: 'Upload to codecov.io'
+- stage: Publish
+  displayName: Publish docker images and artifacts
+  jobs:  
+  - job: Publish
+    steps:
+    - task: Docker@2
+      displayName: 'Build and push db docker image'
+      inputs:
+        containerRegistry: 'Dockerhub - marekbf3'
+        repository: 'marekbf3/image-edit-db'
+        command: 'buildAndPush'
+        Dockerfile: 'docker-shared/sqlserver-docker/Dockerfile'
+        buildContext: 'docker-shared/sqlserver-docker'
+        tags: 'latest'
+    - task: Docker@2
+      displayName: 'Build and push app docker image'
+      inputs:
+        containerRegistry: 'Dockerhub - marekbf3'
+        repository: 'marekbf3/image-edit-web'
+        command: 'buildAndPush'
+        Dockerfile: 'ImageEdit.WebAPI/docker/Dockerfile'
+        buildContext: '.'
+        tags: 'latest'
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish artifacts'
+      inputs:
+        PathtoPublish: 'deployment'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
