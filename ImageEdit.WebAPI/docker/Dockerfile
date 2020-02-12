@@ -12,6 +12,7 @@ RUN dotnet restore ImageEdit.WebAPI/ImageEdit.WebAPI.csproj
 FROM build AS publish
 RUN dotnet publish --no-restore "ImageEdit.WebAPI/ImageEdit.WebAPI.csproj" -c Release -o /app
 COPY "ImageEdit.WebAPI/docker/docker-entrypoint.sh" /app
+RUN chmod +x /app/docker-entrypoint.sh
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .

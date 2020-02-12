@@ -23,7 +23,7 @@ stages:
       - task: DotNetCoreCLI@2
         inputs:
           command: 'build'
-          projects: 'ImageEdit/ImageEdit.WebAPI/ImageEdit.WebAPI.csproj'
+          projects: 'ImageEdit.WebAPI/ImageEdit.WebAPI.csproj'
 - stage: Test
   displayName: Unit, Integration, E2E Tests
   jobs:  
