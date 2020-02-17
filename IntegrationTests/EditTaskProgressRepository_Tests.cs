@@ -41,12 +41,24 @@ namespace IntegrationTests
         private readonly ImageEditAppContext _dbContext;
         private readonly IContainer _container;
 
+
+        private void TruncTables()
+        {
+            _dbContext.Database.ExecuteSqlRaw($"ALTER TABLE [{nameof(_dbContext.DbEditTaskResult)}] " +
+                                              $"DROP CONSTRAINT FK_DbEditTaskResult_DbEditTaskProgress;");
+            _dbContext.Database.ExecuteSqlRaw($"TRUNCATE TABLE [{nameof(_dbContext.DbEditTaskResult)}];");
+            _dbContext.Database.ExecuteSqlRaw($"TRUNCATE TABLE [{nameof(_dbContext.DbEditTaskProgress)}];");
+            _dbContext.Database.ExecuteSqlRaw($"ALTER TABLE [{nameof(_dbContext.DbEditTaskResult)}] " +
+                                              $"ADD CONSTRAINT FK_DbEditTaskResult_DbEditTaskProgress FOREIGN KEY ([TaskId], [GroupId]) " +
+                                              $"REFERENCES [dbo].[DbEditTaskProgress]([TaskId], [GroupId])");
+        }
+
         public EditTaskProgressRepository_Tests()
         {
             _container = CreateDIContainer();
             _dbContext = _container.Resolve<ImageEditAppContext>();
             _editTaskProgressRepository = _container.Resolve<IEditTaskProgressRepository>();
-            _dbContext.Database.ExecuteSqlRaw($"TRUNCATE TABLE [{nameof(_dbContext.DbEditTaskProgress)}];");
+            TruncTables();
         }
 
         private IContainer CreateDIContainer()
@@ -92,9 +104,24 @@ namespace IntegrationTests
             total.Should().Be(1);
         }
 
+
+        [Fact]
+        public void Get_()
+        {
+            var mapper = _container.Resolve<IMapper>();
+            var editTaskProgress = new EditTaskProgress(Guid.NewGuid(), Guid.NewGuid(), EditTaskState.Pending);
+            _dbContext.DbEditTaskProgress.Add(mapper.Map<DbEditTaskProgress>(editTaskProgress));
+            _dbContext.SaveChanges();
+
+            var found = _editTaskProgressRepository.GetTaskProgressesByGroupId(editTaskProgress.GroupId);
+
+            found.Length.Should().Be(1);
+            found[0].Should().BeEquivalentTo(editTaskProgress);
+        }
+
         public void Dispose()
         {
-            _dbContext.Database.ExecuteSqlRaw($"TRUNCATE TABLE [{nameof(_dbContext.DbEditTaskProgress)}];");
+            TruncTables();
         }
     }
 }

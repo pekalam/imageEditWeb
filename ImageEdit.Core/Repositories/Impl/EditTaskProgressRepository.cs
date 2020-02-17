@@ -21,10 +21,11 @@ namespace ImageEdit.Core.Repositories.Impl
 
         public EditTaskProgress[] GetTaskProgressesByGroupId(Guid groupId)
         {
-            return _dbContext.DbEditTaskProgress
+            var dbProgresses = _dbContext.DbEditTaskProgress
                 .Where(progress => progress.GroupId == groupId)
-                .ProjectTo<EditTaskProgress>(_mapper.ConfigurationProvider)
                 .ToArray();
+
+            return dbProgresses.Select(dbProgress => _mapper.Map<DbEditTaskProgress, EditTaskProgress>(dbProgress)).ToArray();
         }
 
         public void UpdateTaskProgress(EditTaskProgress editTask)

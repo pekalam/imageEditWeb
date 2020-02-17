@@ -20,7 +20,7 @@ namespace ImageEdit.Core.Services
             _editTaskProgressRepository = editTaskProgressRepository;
         }
 
-        public void CreateEditTask(Stream img, EditTaskAction[] editTaskActions)
+        public Guid CreateEditTask(Stream img, EditTaskAction[] editTaskActions)
         {
             var imageId = _imgRepository.AddImg(img);
             var groupId = Guid.NewGuid();
@@ -36,6 +36,8 @@ namespace ImageEdit.Core.Services
             {
                 _messageQueueService.QueueTaskAsync(task).Wait();
             }
+
+            return groupId;
         }
     }
 }

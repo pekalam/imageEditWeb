@@ -5,7 +5,7 @@ namespace ImageEdit.Core.Domain
 {
     public class EditTaskProgress
     {
-        [Key] public Guid TaskId { get; private set; }
+        public Guid TaskId { get; private set; }
         public Guid GroupId { get; private set; }
         public EditTaskState EditTaskState { get; set; }
 

@@ -1,6 +1,6 @@
 {
   "SQLServer": {
-    "ConnectionString": "Data Source=127.0.0.1;Initial Catalog=ImageEdit.Db;Integrated Security=False;User ID=sa;Password=qwerty"
+    "ConnectionString": "Data Source=127.0.0.1;Initial Catalog=ImageEdit.Db;Integrated Security=False;User ID=sa;Password=Qwerty1234"
   },
   "RabbitMQ": {
     "Host": "localhost"

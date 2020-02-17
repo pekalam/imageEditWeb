@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("E2ETests")]
 namespace ImageEdit.Core.Repositories
 {
-    internal interface IImgRepository
+    public interface IImgRepository
     {
         Guid AddImg(Stream img);
         Stream GetImg(Guid imgId);

@@ -2,9 +2,9 @@
 <CoverageSession>
   <Summary numSequencePoints="584" visitedSequencePoints="195" numBranchPoints="68" visitedBranchPoints="19" sequenceCoverage="33.39" branchCoverage="27.94" maxCyclomaticComplexity="162" minCyclomaticComplexity="18" visitedClasses="18" numClasses="48" visitedMethods="34" numMethods="138" />
   <Modules>
-    <Module hash="1478FC7B-4322-4BBC-AC41-BB49B899DE34">
+    <Module hash="C0C389A5-1C3F-4F15-B4A2-BB95C3E01472">
       <ModulePath>ImageEdit.Core.dll</ModulePath>
-      <ModuleTime>2020-02-11T11:04:04</ModuleTime>
+      <ModuleTime>2020-02-17T04:36:49</ModuleTime>
       <ModuleName>ImageEdit.Core</ModuleName>
       <Files>
         <File uid="1" fullPath="/src/ImageEdit.Core/Services/ImageEditTaskService.cs" />
@@ -2253,9 +2253,9 @@
         </Class>
       </Classes>
     </Module>
-    <Module hash="4C8F28A2-7D19-425A-8C65-D60C2840B245">
+    <Module hash="692C43D4-2068-4FDA-AE6E-F4786833F75A">
       <ModulePath>TestUtils.dll</ModulePath>
-      <ModuleTime>2020-02-11T11:04:04</ModuleTime>
+      <ModuleTime>2020-02-17T04:36:49</ModuleTime>
       <ModuleName>TestUtils</ModuleName>
       <Files>
         <File uid="45" fullPath="/src/TestUtils/TestSettings.cs" />

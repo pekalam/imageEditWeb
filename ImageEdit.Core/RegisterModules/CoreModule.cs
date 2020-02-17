@@ -28,6 +28,8 @@ namespace ImageEdit.Core.RegisterModules
             RegisterBusModule(builder);
             builder.RegisterAssemblyTypes(typeof(CoreModule).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces()
+                .Where(t => t.Name.EndsWith("Service"))
                 .AsImplementedInterfaces();
             builder.RegisterType<ImageEditTaskService>().WithNonPublicCtors().InstancePerLifetimeScope();
             builder.RegisterType<EditTaskProgressService>().WithNonPublicCtors().InstancePerLifetimeScope();
