@@ -59,9 +59,9 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="DbEditTaskProgress.sql" />
+    <Build Include="DbImgTaskProgress.sql" />
     <Build Include="DbImg.sql" />
-    <Build Include="DbEditTaskResult.sql" />
+    <Build Include="DbImgTaskResult.sql" />
   </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent />

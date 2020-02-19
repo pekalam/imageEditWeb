@@ -5,12 +5,12 @@ using MassTransit;
 
 namespace E2ETests.Fakes
 {
-    public class FakeEditTaskConsumer : IConsumer<EditTask>
+    public class FakeEditTaskConsumer : IConsumer<ConvertImgTask>
     {
         public static object lck = new object();
         public static bool Called { get; set; }
 
-        public Task Consume(ConsumeContext<EditTask> context)
+        public Task Consume(ConsumeContext<ConvertImgTask> context)
         {
 //            lock (lck)
 //            {

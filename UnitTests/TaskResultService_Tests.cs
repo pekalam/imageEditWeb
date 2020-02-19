@@ -5,6 +5,7 @@ using System.Text;
 using FluentAssertions;
 using ImageEdit.Core.Domain;
 using ImageEdit.Core.Repositories;
+using ImageEdit.Core.Repositories.Abstr;
 using ImageEdit.Core.Services;
 using Moq;
 using Xunit;
@@ -22,12 +23,12 @@ namespace UnitTests
         {
             var groupId = Guid.NewGuid();
             var taskId = Guid.NewGuid();
-            var expectedResult = new EditTaskResult(taskId, groupId, new MemoryStream(new byte[3]), "png");
-            var taskResultRepository = new Mock<IEditTaskResultRepository>();
+            var expectedResult = new ImgTaskResult(taskId, groupId, new MemoryStream(new byte[3]), "png");
+            var taskResultRepository = new Mock<IImgTaskResultRepository>();
             taskResultRepository.Setup(f => f.GeTaskResult(groupId, taskId))
                 .Returns(expectedResult);
 
-            var taskResultService = new TaskResultService(taskResultRepository.Object);
+            var taskResultService = new ImgTaskResultService(taskResultRepository.Object);
             var result = taskResultService.GetTaskResult(groupId, taskId);
 
             result.GroupId.Should().Be(groupId);

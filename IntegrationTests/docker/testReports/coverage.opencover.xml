@@ -17,9 +17,9 @@
         <File uid="8" fullPath="/src/ImageEdit.Core/RegisterModules/DbModule.cs" />
         <File uid="9" fullPath="/src/ImageEdit.Core/RegisterModules/NonPublicConstructorFinder.cs" />
         <File uid="10" fullPath="/src/ImageEdit.Core/RegisterModules/RegistrationBuilderExtensions.cs" />
-        <File uid="11" fullPath="/src/ImageEdit.Core/Persistence/Mapping/DbEditTaskProgressProfile.cs" />
+        <File uid="11" fullPath="/src/ImageEdit.Core/Persistence/Mapping/DbImgTaskProgressProfile.cs" />
         <File uid="12" fullPath="/src/ImageEdit.Core/Persistence/Mapping/DbImgProfile.cs" />
-        <File uid="13" fullPath="/src/ImageEdit.Core/Persistence/Entities/DbEditTaskProgress.cs" />
+        <File uid="13" fullPath="/src/ImageEdit.Core/Persistence/Entities/DbImgTaskProgress.cs" />
         <File uid="14" fullPath="/src/ImageEdit.Core/Persistence/Entities/DbImg.cs" />
         <File uid="15" fullPath="/src/ImageEdit.Core/Persistence/Context/ImageEditAppContext.cs" />
         <File uid="16" fullPath="/src/ImageEdit.Core/MessageConsumers/EditTaskConsumer.cs" />
@@ -39,9 +39,9 @@
         <File uid="30" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\RegisterModules\DbModule.cs" />
         <File uid="31" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\RegisterModules\NonPublicConstructorFinder.cs" />
         <File uid="32" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\RegisterModules\RegistrationBuilderExtensions.cs" />
-        <File uid="33" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Mapping\DbEditTaskProgressProfile.cs" />
+        <File uid="33" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Mapping\DbImgTaskProgressProfile.cs" />
         <File uid="34" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Mapping\DbImgProfile.cs" />
-        <File uid="35" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Entities\DbEditTaskProgress.cs" />
+        <File uid="35" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Entities\DbImgTaskProgress.cs" />
         <File uid="36" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Entities\DbImg.cs" />
         <File uid="37" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\Persistence\Context\ImageEditAppContext.cs" />
         <File uid="38" fullPath="C:\Users\Marek Pękala\source\repos\ImageEdit\ImageEdit.Core\MessageConsumers\EditTaskConsumer.cs" />
@@ -536,12 +536,12 @@
         </Class>
         <Class>
           <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="1" numMethods="1" />
-          <FullName>ImageEdit.Core.Persistence.Mapping.DbEditTaskProgressProfile</FullName>
+          <FullName>ImageEdit.Core.Persistence.Mapping.DbImgTaskProgressProfile</FullName>
           <Methods>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="5" visitedSequencePoints="5" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void ImageEdit.Core.Persistence.Mapping.DbEditTaskProgressProfile::.ctor()</Name>
+              <Name>System.Void ImageEdit.Core.Persistence.Mapping.DbImgTaskProgressProfile::.ctor()</Name>
               <FileRef uid="11" />
               <SequencePoints>
                 <SequencePoint vc="4" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="11" />
@@ -578,12 +578,12 @@
         </Class>
         <Class>
           <Summary numSequencePoints="3" visitedSequencePoints="3" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="1" numClasses="1" visitedMethods="3" numMethods="3" />
-          <FullName>ImageEdit.Core.Persistence.Entities.DbEditTaskProgress</FullName>
+          <FullName>ImageEdit.Core.Persistence.Entities.DbImgTaskProgress</FullName>
           <Methods>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
-              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_TaskId()</Name>
+              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_TaskId()</Name>
               <FileRef uid="13" />
               <SequencePoints>
                 <SequencePoint vc="6" uspid="7" ordinal="0" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="13" />
@@ -594,7 +594,7 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
-              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_GroupId()</Name>
+              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_GroupId()</Name>
               <FileRef uid="13" />
               <SequencePoints>
                 <SequencePoint vc="6" uspid="8" ordinal="0" sl="8" sc="1" el="8" ec="2" bec="0" bev="0" fileid="13" />
@@ -605,7 +605,7 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
-              <Name>System.Int32 ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_EditTaskState()</Name>
+              <Name>System.Int32 ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_EditTaskState()</Name>
               <FileRef uid="13" />
               <SequencePoints>
                 <SequencePoint vc="7" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="13" />
@@ -661,7 +661,7 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="100" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="1" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="100" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="1" numMethods="1" />
               <MetadataToken />
-              <Name>Microsoft.EntityFrameworkCore.DbSet`1&lt;ImageEdit.Core.Persistence.Entities.DbEditTaskProgress&gt; ImageEdit.Core.Persistence.Context.ImageEditAppContext::get_DbEditTaskProgress()</Name>
+              <Name>Microsoft.EntityFrameworkCore.DbSet`1&lt;ImageEdit.Core.Persistence.Entities.DbImgTaskProgress&gt; ImageEdit.Core.Persistence.Context.ImageEditAppContext::get_DbImgTaskProgress()</Name>
               <FileRef uid="15" />
               <SequencePoints>
                 <SequencePoint vc="10" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="15" />
@@ -1635,12 +1635,12 @@
         </Class>
         <Class>
           <Summary numSequencePoints="5" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="1" />
-          <FullName>ImageEdit.Core.Persistence.Mapping.DbEditTaskProgressProfile</FullName>
+          <FullName>ImageEdit.Core.Persistence.Mapping.DbImgTaskProgressProfile</FullName>
           <Methods>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="True" isGetter="False" isSetter="False" isStatic="True">
               <Summary numSequencePoints="5" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Void ImageEdit.Core.Persistence.Mapping.DbEditTaskProgressProfile::.ctor()</Name>
+              <Name>System.Void ImageEdit.Core.Persistence.Mapping.DbImgTaskProgressProfile::.ctor()</Name>
               <FileRef uid="33" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="33" />
@@ -1677,12 +1677,12 @@
         </Class>
         <Class>
           <Summary numSequencePoints="3" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="1" visitedMethods="0" numMethods="3" />
-          <FullName>ImageEdit.Core.Persistence.Entities.DbEditTaskProgress</FullName>
+          <FullName>ImageEdit.Core.Persistence.Entities.DbImgTaskProgress</FullName>
           <Methods>
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_TaskId()</Name>
+              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_TaskId()</Name>
               <FileRef uid="35" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="7" ordinal="0" sl="7" sc="1" el="7" ec="2" bec="0" bev="0" fileid="35" />
@@ -1693,7 +1693,7 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_GroupId()</Name>
+              <Name>System.Guid ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_GroupId()</Name>
               <FileRef uid="35" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="8" ordinal="0" sl="8" sc="1" el="8" ec="2" bec="0" bev="0" fileid="35" />
@@ -1704,7 +1704,7 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>System.Int32 ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_EditTaskState()</Name>
+              <Name>System.Int32 ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_EditTaskState()</Name>
               <FileRef uid="35" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="9" ordinal="0" sl="9" sc="1" el="9" ec="2" bec="0" bev="0" fileid="35" />
@@ -1760,7 +1760,7 @@
             <Method cyclomaticComplexity="1" nPathComplexity="0" sequenceCoverage="0" branchCoverage="100" isConstructor="False" isGetter="True" isSetter="False" isStatic="True">
               <Summary numSequencePoints="1" visitedSequencePoints="0" numBranchPoints="0" visitedBranchPoints="0" sequenceCoverage="0" branchCoverage="100" maxCyclomaticComplexity="1" minCyclomaticComplexity="1" visitedClasses="0" numClasses="0" visitedMethods="0" numMethods="1" />
               <MetadataToken />
-              <Name>Microsoft.EntityFrameworkCore.DbSet`1&lt;ImageEdit.Core.Persistence.Entities.DbEditTaskProgress&gt; ImageEdit.Core.Persistence.Context.ImageEditAppContext::get_DbEditTaskProgress()</Name>
+              <Name>Microsoft.EntityFrameworkCore.DbSet`1&lt;ImageEdit.Core.Persistence.Entities.DbImgTaskProgress&gt; ImageEdit.Core.Persistence.Context.ImageEditAppContext::get_DbImgTaskProgress()</Name>
               <FileRef uid="37" />
               <SequencePoints>
                 <SequencePoint vc="0" uspid="17" ordinal="0" sl="17" sc="1" el="17" ec="2" bec="0" bev="0" fileid="37" />

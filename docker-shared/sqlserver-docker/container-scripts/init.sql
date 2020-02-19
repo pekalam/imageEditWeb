@@ -248,55 +248,45 @@ GO
 CREATE TABLE [dbo].[DbImg] (
     [ImgId]     UNIQUEIDENTIFIER NOT NULL,
     [Image]     VARBINARY (MAX)  NOT NULL,
-    [Extension] NCHAR (5)        NOT NULL,
+    [Extension] VARCHAR (5)      NOT NULL,
     PRIMARY KEY CLUSTERED ([ImgId] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[DbEditTaskProgress]...';
+PRINT N'Creating [dbo].[DbImgTaskProgress]...';
 
 
 GO
-CREATE TABLE [dbo].[DbEditTaskProgress] (
-    [TaskId]        UNIQUEIDENTIFIER NOT NULL,
-    [GroupId]       UNIQUEIDENTIFIER NOT NULL,
-    [EditTaskState] INT              NOT NULL,
-    PRIMARY KEY CLUSTERED ([TaskId] ASC, [GroupId] ASC)
+CREATE TABLE [dbo].[DbImgTaskProgress] (
+    [GroupId]      UNIQUEIDENTIFIER NOT NULL,
+    [TaskId]       UNIQUEIDENTIFIER NOT NULL,
+    [ImgTaskState] INT              NOT NULL,
+    PRIMARY KEY CLUSTERED ([GroupId] ASC, [TaskId] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[DbEditTaskResult]...';
+PRINT N'Creating [dbo].[DbImgTaskResult]...';
 
 
 GO
-CREATE TABLE [dbo].[DbEditTaskResult] (
-    [Id]        BIGINT           IDENTITY (1, 1) NOT NULL,
-    [TaskId]    UNIQUEIDENTIFIER NOT NULL,
+CREATE TABLE [dbo].[DbImgTaskResult] (
     [GroupId]   UNIQUEIDENTIFIER NOT NULL,
-    [Image]     VARBINARY (MAX)  NOT NULL,
-    [Extension] NCHAR (5)        NOT NULL,
-    PRIMARY KEY NONCLUSTERED ([Id] ASC)
+    [TaskId]    UNIQUEIDENTIFIER NOT NULL,
+    [Image]     VARBINARY (MAX)  NULL,
+    [Extension] VARCHAR (5)      NULL,
+    PRIMARY KEY CLUSTERED ([GroupId] ASC, [TaskId] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[DbEditTaskResult].[FK_Index]...';
+PRINT N'Creating [dbo].[FK_DbImgTaskProgress_DbImgTaskResult]...';
 
 
 GO
-CREATE UNIQUE CLUSTERED INDEX [FK_Index]
-    ON [dbo].[DbEditTaskResult]([TaskId] ASC, [GroupId] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[FK_DbEditTaskResult_DbEditTaskProgress]...';
-
-
-GO
-ALTER TABLE [dbo].[DbEditTaskResult]
-    ADD CONSTRAINT [FK_DbEditTaskResult_DbEditTaskProgress] FOREIGN KEY ([TaskId], [GroupId]) REFERENCES [dbo].[DbEditTaskProgress] ([TaskId], [GroupId]);
+ALTER TABLE [dbo].[DbImgTaskProgress]
+    ADD CONSTRAINT [FK_DbImgTaskProgress_DbImgTaskResult] FOREIGN KEY ([GroupId], [TaskId]) REFERENCES [dbo].[DbImgTaskResult] ([GroupId], [TaskId]);
 
 
 GO

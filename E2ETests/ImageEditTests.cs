@@ -24,7 +24,7 @@ namespace E2ETests
         [Fact]
         public async Task ImageEditController_when_edit_action_called_returns_200_and_edit_task_consumer_receives_msg()
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, "/api/v1/edit");
+            var request = new HttpRequestMessage(HttpMethod.Post, "/api/v1/convert");
             var content = new MultipartFormDataContent();
 
 
@@ -35,8 +35,8 @@ namespace E2ETests
 
             imageContent.Headers.ContentType =
                 new MediaTypeHeaderValue("image/png");
-            content.Add(imageContent, "img", "0.jpg");
-            content.Add(new StringContent("{\"opt1\": \"value1\"}"), "dict");
+            content.Add(imageContent, "img", "0.png");
+            content.Add(new StringContent("{\"to\": \"jpg\"}"), "dict");
 
             request.Content = content;
             var response = await _client.SendAsync(request);

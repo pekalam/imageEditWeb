@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Autofac;
+using ImageEdit.Core.Domain;
 using ImageEdit.Core.MessageConsumers;
 using ImageEdit.Core.RegisterModules;
 using MassTransit;

@@ -449,9 +449,9 @@
         }
       }
     },
-    "C:\\Users\\Marek Pękala\\source\\repos\\ImageEdit\\ImageEdit.Core\\Persistence\\Mapping\\DbEditTaskProgressProfile.cs": {
-      "ImageEdit.Core.Persistence.Mapping.DbEditTaskProgressProfile": {
-        "System.Void ImageEdit.Core.Persistence.Mapping.DbEditTaskProgressProfile::.ctor()": {
+    "C:\\Users\\Marek Pękala\\source\\repos\\ImageEdit\\ImageEdit.Core\\Persistence\\Mapping\\DbImgTaskProgressProfile.cs": {
+      "ImageEdit.Core.Persistence.Mapping.DbImgTaskProgressProfile": {
+        "System.Void ImageEdit.Core.Persistence.Mapping.DbImgTaskProgressProfile::.ctor()": {
           "Lines": {
             "9": 0,
             "10": 0,
@@ -477,21 +477,21 @@
         }
       }
     },
-    "C:\\Users\\Marek Pękala\\source\\repos\\ImageEdit\\ImageEdit.Core\\Persistence\\Entities\\DbEditTaskProgress.cs": {
-      "ImageEdit.Core.Persistence.Entities.DbEditTaskProgress": {
-        "System.Guid ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_TaskId()": {
+    "C:\\Users\\Marek Pękala\\source\\repos\\ImageEdit\\ImageEdit.Core\\Persistence\\Entities\\DbImgTaskProgress.cs": {
+      "ImageEdit.Core.Persistence.Entities.DbImgTaskProgress": {
+        "System.Guid ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_TaskId()": {
           "Lines": {
             "7": 0
           },
           "Branches": []
         },
-        "System.Guid ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_GroupId()": {
+        "System.Guid ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_GroupId()": {
           "Lines": {
             "8": 0
           },
           "Branches": []
         },
-        "System.Int32 ImageEdit.Core.Persistence.Entities.DbEditTaskProgress::get_EditTaskState()": {
+        "System.Int32 ImageEdit.Core.Persistence.Entities.DbImgTaskProgress::get_EditTaskState()": {
           "Lines": {
             "9": 0
           },
@@ -523,7 +523,7 @@
     },
     "C:\\Users\\Marek Pękala\\source\\repos\\ImageEdit\\ImageEdit.Core\\Persistence\\Context\\ImageEditAppContext.cs": {
       "ImageEdit.Core.Persistence.Context.ImageEditAppContext": {
-        "Microsoft.EntityFrameworkCore.DbSet`1<ImageEdit.Core.Persistence.Entities.DbEditTaskProgress> ImageEdit.Core.Persistence.Context.ImageEditAppContext::get_DbEditTaskProgress()": {
+        "Microsoft.EntityFrameworkCore.DbSet`1<ImageEdit.Core.Persistence.Entities.DbImgTaskProgress> ImageEdit.Core.Persistence.Context.ImageEditAppContext::get_DbImgTaskProgress()": {
           "Lines": {
             "17": 0
           },

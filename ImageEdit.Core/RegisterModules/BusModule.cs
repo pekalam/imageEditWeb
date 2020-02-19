@@ -23,7 +23,7 @@ namespace ImageEdit.Core.RegisterModules
         protected virtual void RegisterEditTaskConsumers(IRabbitMqReceiveEndpointConfigurator configurator,
             IComponentContext context)
         {
-            configurator.ConfigureConsumer<EditTaskConsumer>(context);
+            configurator.ConfigureConsumer<ConvertTaskConsumer>(context);
         }
 
         protected override void Load(ContainerBuilder builder)
